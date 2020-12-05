@@ -1,0 +1,10 @@
+module DayXX
+  ( solve1
+  , solve2
+  ) where
+
+solve1 :: IO ()
+solve1 = print "Not implemented"
+
+solve2 :: IO ()
+solve2 = print "Not implemented"
