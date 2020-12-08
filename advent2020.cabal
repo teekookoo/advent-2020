@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 4454007502ef4645c38b376351791c33b1c656debd0c76580e4d20ad015fd9b1
+-- hash: 5e5ffcdeae602c97653861850a46ebdc561368ec0a2c44579056c5a7b63a6f51
 
 name:           advent2020
 version:        0.1.0.0
@@ -34,12 +34,14 @@ library
       Day05
       Day06
       Day07
+      Day08
   other-modules:
       Paths_advent2020
   hs-source-dirs:
       src
   build-depends:
-      base >=4.7 && <5
+      array >=0.5
+    , base >=4.7 && <5
     , containers >=0.6 && <1
     , parsec >=3
   default-language: Haskell2010
@@ -53,6 +55,7 @@ executable advent2020-exe
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       advent2020
+    , array >=0.5
     , base >=4.7 && <5
     , containers >=0.6 && <1
     , parsec >=3
@@ -68,6 +71,7 @@ test-suite advent2020-test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       advent2020
+    , array >=0.5
     , base >=4.7 && <5
     , containers >=0.6 && <1
     , parsec >=3
