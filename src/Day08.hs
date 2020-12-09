@@ -5,8 +5,7 @@ module Day08
 
 import Data.Array.Unboxed
 import qualified Data.IntSet as S
-import Data.List (find)
-import Data.Maybe (mapMaybe)
+import Data.Maybe (listToMaybe, mapMaybe)
 import Text.Parsec
 
 data Instruction = Acc Int | Jmp Int | Nop Int | Exit deriving (Show, Eq)
@@ -53,9 +52,9 @@ solve2 = do
         Nop x -> Just $ prog // [(ptr, Jmp x)]
         Exit  -> Nothing
       options = mapMaybe modify [ptrMin .. ptrMax]
-  case find terminates options of
+  case listToMaybe $ mapMaybe (finalState . initialize) options of
     Nothing -> error "No terminating program found"
-    Just p  -> print . accumulator . finalState $ initialize p
+    Just es  -> print $ accumulator es
 
 initialize :: Program -> ExecutionState
 initialize prog = ExecutionState { program = prog
@@ -73,18 +72,11 @@ advance es = case program es ! ptr of
     ptr = pointer es
     acc = accumulator es
 
-terminates :: Program -> Bool
-terminates = f S.empty . iterate advance . initialize
+finalState :: ExecutionState -> Maybe ExecutionState
+finalState = f S.empty . iterate advance
   where
     f seen (es:ess)
-      | program es ! pointer es == Exit = True
-      | pointer es `S.member` seen      = False
+      | program es ! pointer es == Exit = Just es
+      | pointer es `S.member` seen      = Nothing
       | otherwise                       = f (S.insert (pointer es) seen) ess
     f _ [] = error "This should never happen"
-
--- Return the final state of an execution. Does not check for termination,
--- so beware
-finalState :: ExecutionState -> ExecutionState
-finalState es = case program es ! pointer es of
-  Exit -> es
-  _    -> finalState $ advance es
