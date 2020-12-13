@@ -12,7 +12,7 @@ import qualified Day09
 import qualified Day10
 import qualified Day11
 import qualified Day12
--- import qualified Day13
+import qualified Day13
 -- import qualified Day14
 -- import qualified Day15
 -- import qualified Day16
@@ -57,7 +57,7 @@ options = info (optParser <**> helper) infoContents
                <> help ("Show solution for day DAY (between 1 and 25). "
                        ++ "Defaults to latest available day")
              )
-    latest = length solvers - 1
+    latest = length solvers
     parseAll = flag' ShowAll (
       long "all"
         <> short 'a'
@@ -82,7 +82,7 @@ solvers = [ (Day01.solve1, Day02.solve2)
           , (Day10.solve1, Day10.solve2)
           , (Day11.solve1, Day11.solve2)
           , (Day12.solve1, Day12.solve2)
-          -- , (Day13.solve1, Day13.solve2)
+          , (Day13.solve1, Day13.solve2)
           -- , (Day14.solve1, Day14.solve2)
           -- , (Day15.solve1, Day15.solve2)
           -- , (Day16.solve1, Day16.solve2)
