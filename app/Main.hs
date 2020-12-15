@@ -14,7 +14,7 @@ import qualified Day11
 import qualified Day12
 import qualified Day13
 import qualified Day14
--- import qualified Day15
+import qualified Day15
 -- import qualified Day16
 -- import qualified Day17
 -- import qualified Day18
@@ -84,7 +84,7 @@ solvers = [ (Day01.solve1, Day02.solve2)
           , (Day12.solve1, Day12.solve2)
           , (Day13.solve1, Day13.solve2)
           , (Day14.solve1, Day14.solve2)
-          -- , (Day15.solve1, Day15.solve2)
+          , (Day15.solve1, Day15.solve2)
           -- , (Day16.solve1, Day16.solve2)
           -- , (Day17.solve1, Day17.solve2)
           -- , (Day18.solve1, Day18.solve2)
