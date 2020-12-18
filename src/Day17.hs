@@ -3,11 +3,11 @@ module Day17
   , solve2
   ) where
 
-import Control.Monad (guard)
-import Data.Function ((&))
-import Data.List (foldl')
-import Data.Set (Set)
-import qualified Data.Set as S
+import           Control.Monad (guard)
+import           Data.Function ((&))
+import           Data.List     (foldl')
+import           Data.Set      (Set)
+import qualified Data.Set      as S
 
 type Coord = (Int, Int, Int)
 type Grid = Set Coord
@@ -31,13 +31,11 @@ input2 = toActiveSet <$> readFile "src/inputs/input17"
 
 solve1 :: IO ()
 solve1 = input >>= print . S.size . advance6
-  where
-    advance6 g = foldl' (&) g $ replicate 6 advance
+  where advance6 g = foldl' (&) g $ replicate 6 advance
 
 solve2 :: IO ()
 solve2 = input2 >>= print . S.size . advance6
-  where
-    advance6 g = foldl' (&) g $ replicate 6 advance2
+  where advance6 g = foldl' (&) g $ replicate 6 advance2
 
 advance :: Grid -> Grid
 advance g = S.fromList $ filter activeNext allCoords
