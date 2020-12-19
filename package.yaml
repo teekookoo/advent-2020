@@ -26,6 +26,7 @@ dependencies:
 - array >= 0.5
 - optparse-applicative >= 0.15
 - text >= 1
+- bytestring >= 0.10
 
 library:
   source-dirs: src

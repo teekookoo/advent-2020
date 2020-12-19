@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 592c1aae92f434cd40b34a47eedf5538c66cb8db8be8226f171c8274cd9dfa88
+-- hash: f27f6be0f4e371fc5d1ae4a54d28d262d6ebd18dd4df26a132ffd2b2810982ab
 
 name:           advent2020
 version:        0.1.0.0
@@ -45,6 +45,7 @@ library
       Day16
       Day17
       Day18
+      Day19
   other-modules:
       Paths_advent2020
   hs-source-dirs:
@@ -52,6 +53,7 @@ library
   build-depends:
       array >=0.5
     , base >=4.7 && <5
+    , bytestring >=0.10
     , containers >=0.6 && <1
     , optparse-applicative >=0.15
     , parsec >=3
@@ -69,6 +71,7 @@ executable advent2020-exe
       advent2020
     , array >=0.5
     , base >=4.7 && <5
+    , bytestring >=0.10
     , containers >=0.6 && <1
     , optparse-applicative >=0.15
     , parsec >=3
@@ -87,6 +90,7 @@ test-suite advent2020-test
       advent2020
     , array >=0.5
     , base >=4.7 && <5
+    , bytestring >=0.10
     , containers >=0.6 && <1
     , optparse-applicative >=0.15
     , parsec >=3
