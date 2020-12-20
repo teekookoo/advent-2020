@@ -27,6 +27,7 @@ dependencies:
 - optparse-applicative >= 0.15
 - text >= 1
 - bytestring >= 0.10
+- deepseq >= 1.4
 
 library:
   source-dirs: src
