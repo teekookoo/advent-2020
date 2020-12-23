@@ -62,27 +62,16 @@ advance size (GameState cups first) = GameState cups' first'
   where
     !cups' = M.union (M.fromList changes) cups
     changes =
-      [(dest, head pickup), (last pickup, cups M.! dest), (first, first')]
-    first' = cups M.! last pickup
-    pickup = take 3 . drop 1 $ iterate (\c -> cups M.! c) first
+      [(dest, firstMoved), (lastMoved, cups M.! dest), (first, first')]
+    first' = cups M.! lastMoved
+    firstMoved = cups M.! first
+    secondMoved = cups M.! firstMoved
+    lastMoved = cups M.! secondMoved
     dest = dest' first
     dest' x
-      | next x `notElem` pickup = next x
+      | next x `notElem` [firstMoved, secondMoved, lastMoved] = next x
       | otherwise = dest' (next x)
     next x = 1 + ((x - 2) `mod` size)
-
--- advance :: Cups -> Cups
--- advance Empty = undefined
--- advance cups@(cur :<| ctail) = beforePickup >< pickup >< afterPickup
---   where
---     (pickup, rest) = Seq.splitAt 3 ctail
---     beforePickup = untilDest |> d
---     afterPickup = afterDest |> cur
---     (untilDest, d :<| afterDest) = Seq.breakl (== dest cur) rest
---     dest x
---       | next x `notElem` pickup = next x
---       | otherwise = dest (next x)
---     next x = 1 + ((x - 2) `mod` Seq.length cups)
 
 showCups :: GameState -> String
 showCups (GameState cups cup) = foldr' (\c cs -> show c ++ cs) "" .
