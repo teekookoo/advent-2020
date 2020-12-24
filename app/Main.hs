@@ -23,7 +23,7 @@ import qualified Day20
 import qualified Day21
 import qualified Day22
 import qualified Day23
--- import qualified Day24
+import qualified Day24
 -- import qualified Day25
 import Options.Applicative
 
@@ -93,6 +93,6 @@ solvers = [ (Day01.solve1, Day02.solve2)
           , (Day21.solve1, Day21.solve2)
           , (Day22.solve1, Day22.solve2)
           , (Day23.solve1, Day23.solve2)
-          -- , (Day24.solve1, Day24.solve2)
+          , (Day24.solve1, Day24.solve2)
           -- , (Day25.solve1, Day25.solve2)
           ]
